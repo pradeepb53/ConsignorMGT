@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>    
+</head>
+
+<body>
+    <div data-ng-controller="contractDetailController as vm">
+        <div class="text-danger text-center" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
+        <wait-cursor display-when="vm.isBusy"></wait-cursor>
+        <h3>{{vm.ownerCode}}/{{vm.eventNumber}}</h3>
+        <h3>{{vm.contractDetails}}</h3>
+       
+        <div ng-repeat="element in vm.fullContract">
+            
+            <table class="table table-responsive table-striped">
+                <tr>
+                    <th>Manufacture</th>
+                    <th> Model</th>
+                    <th> R&R</th>
+                    <th> Surcharge Rate</th>
+                    <th> Created Date</th>
+                </tr>
+               
+
+                <tr ng-repeat="value in element.contractDetails" >
+                  <td>{{value.manufacture}}</td>
+                   <td>{{value.model}}</td>
+                    <td>{{value.RandRBudget}}</td>
+                    <td>{{value.surchargeRate}}</td>
+                    <td>{{value.dateCreated | date: 'MM-dd-yyyy'}}</td>
+                </tr>
+                
+            </table>
+        </div>
+        <div>
+            
+            <form novalidate name="newContractForm" ng-submit="vm.addContractDetails()">
+
+                <div class="form-group">
+                    <label for="name">Manufacture</label>
+                    <input class="form-control" type="text" id="manufacture" name="manufacture"
+                           ng-model="vm.newContractDetails.manufacture" required ng-minlength="3" />
+                    <span ng-show="newContractForm.manufacture.$error.required" class="text-warning">Manufacture is required</span>
+                    <span ng-show="newContractForm.manufacture.$error.minlength">Manufacture must be at least three charactors </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Model</label>
+                    <input class="form-control" type="text" id="model" name="model"
+                           ng-model="vm.newContractDetails.model" required ng-minlength="3" />
+                    <span ng-show="newContractForm.model.$error.required" class="text-warning">Model is required</span>
+                    <span ng-show="newContractForm.model.$error.minlength">Model must be at least 6 charactors </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">R & R Budget; </label>
+                    <input class="form-control" type="text" id="RandRBudget" name="RandRBudget"
+                           ng-model="vm.newContractDetails.RandRBudget" />
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Surcharge Rate; </label>
+                    <input class="form-control" type="text" id="SurchargeRate" name="SurchargeRate"
+                           ng-model="vm.newContractDetails.SurchargeRate" />
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Date Created</label>
+                    <input class="form-control" type="text" id="dateCreated" name="dateCreated"
+                           ng-model="vm.newContractDetails.dateCreated" required ng-minlength="3" />
+                    <span ng-show="newContractForm.dateCreated.$error.required" class="text-warning">Creation Date is required</span>
+
+                </div>
+
+                <div>
+                    <input type="submit" value="Add" class="btn btn-success btn-sm"
+                           ng-disabled="newContractForm.$invalid" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

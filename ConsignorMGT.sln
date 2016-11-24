@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C5579DF1-AABB-4BF3-952A-9CD939098F8E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2DB919E9-7961-4A4B-A92E-F93FBE0F6212}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ConsignorMGT", "src\ConsignorMGT\ConsignorMGT.xproj", "{EB715880-1E14-44FB-97A4-3E420FB0B3E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB715880-1E14-44FB-97A4-3E420FB0B3E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB715880-1E14-44FB-97A4-3E420FB0B3E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB715880-1E14-44FB-97A4-3E420FB0B3E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB715880-1E14-44FB-97A4-3E420FB0B3E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EB715880-1E14-44FB-97A4-3E420FB0B3E0} = {C5579DF1-AABB-4BF3-952A-9CD939098F8E}
+	EndGlobalSection
+EndGlobal

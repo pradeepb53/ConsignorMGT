@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    
+        <div data-ng-controller="contractHeaderController as vm">
+            <div class="text-danger text-center" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
+            <wait-cursor display-when="vm.isBusy"></wait-cursor>
+            <!--<div ng-show="vm.isBusy" class="text-center"><i class="fa fa-circle-o-notch fa-spin">Loading...</i></div>-->
+            <div>
+                <table class="table table-responsive table-striped">
+                    <tr>
+                        <th>Code</th>
+                        <th>Event</th>
+                        <th>Contract Type</th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
+                    <tr ng-repeat="element in vm.contracts">
+                        <td>{{element.consignorCode}}</td>
+                        <td>{{element.eventNumber}}</td>
+                        <td>{{element.type}}</td>
+                        <td>{{element.dateSigned | date: 'MM-dd-yyyy'}}</td>
+                        <!--<td> <a href="#!/detail" class="btn btn-sm btn-primary">Details </a></td>-->
+                        <td> <a ng-href="#!/detail/{{element.consignorCode}}/{{element.eventNumber}}" class="btn btn-sm btn-primary">Details </a></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <form novalidate name="newContractForm" ng-submit="vm.addContract()">
+
+                    <div class="form-group">
+                        <label for="name">Consignor Code</label>
+                        <input class="form-control" type="text" id="consignorCode" name="consignorCode"
+                               ng-model="vm.newContract.consignorCode" required ng-minlength="3" />
+                        <span ng-show="newContractForm.consignorCode.$error.required" class="text-warning">Consignor Code is required</span>
+                        <span ng-show="newContractForm.consignorCode.$error.minlength">Consignor Code must be at least three charactors </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Event Number</label>
+                        <input class="form-control" type="text" id="eventNumber" name="eventNumber"
+                               ng-model="vm.newContract.eventNumber" required ng-minlength="3" />
+                        <span ng-show="newContractForm.eventNumber.$error.required" class="text-warning">Event Number is required</span>
+                        <span ng-show="newContractForm.eventNumber.$error.minlength">Event Number must be 6 digits </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Contract Type</label>
+                        <input class="form-control" type="text" id="type" name="type"
+                               ng-model="vm.newContract.type" required ng-minlength="3" />
+                        <span ng-show="newContractForm.type.$error.required" class="text-warning">Contract Type is required</span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Date Signed</label>
+                        <input class="form-control" type="text" id="dateSigned" name="dateSigned"
+                               ng-model="vm.newContract.dateSigned" required ng-minlength="3" />
+                        <span ng-show="newContractForm.consignorCode.$error.required" class="text-warning">Date Signed is required</span>
+
+                    </div>
+
+                    <div>
+                        <input type="submit" value="Add" class="btn btn-success btn-sm"
+                               ng-disabled="newContractForm.$invalid" />
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    
+</body>
+</html>
